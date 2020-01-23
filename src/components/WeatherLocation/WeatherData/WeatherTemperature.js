@@ -29,9 +29,9 @@ const getWeatherIcon = (weatherState) => {
     const icon = icons[weatherState];
 
     if (icon)
-        return <WeatherIcons className="wicon" name={icon} size="2x" />
+        return <WeatherIcons className="wicon" name={icon}/>
     else
-        return <WeatherIcons className="wicon" name={"day-sunny"} size="2x" />
+        return <WeatherIcons className="wicon" name={"day-sunny"}/>
 }
 
 export default class WeatherTemperature extends Component {

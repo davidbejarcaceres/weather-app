@@ -21,15 +21,13 @@ class WeatherData extends Component {
         this.data = this.props.data;
     }
 
-
-
     render() {
         console.log(this.data.weatherState);
 
         return (
             <div className="weatherDataCont">
                 <WeatherTemperature temperature={this.data.temperature} weatherState={this.data.weatherState}></WeatherTemperature>
-                <WeatherExtraInfo humidity={this.data.humidity} wind={this.data.wind}></WeatherExtraInfo>
+                <WeatherExtraInfo humidity={this.data.humidity} wind={this.data.wind}></WeatherExtraInfo>                
             </div>
         );
     }
@@ -40,10 +38,10 @@ export default WeatherData;
 
 WeatherData.propTypes = {
     data: PropTypes.shape({
-        temperature: PropTypes.number,
-        weatherState: PropTypes.string,
-        humidity: PropTypes.number,
-        wind: PropTypes.string
+        temperature: PropTypes.number.isRequired,
+        weatherState: PropTypes.string.isRequired,
+        humidity: PropTypes.number.isRequired,
+        wind: PropTypes.string.isRequired
     })
 
 };
