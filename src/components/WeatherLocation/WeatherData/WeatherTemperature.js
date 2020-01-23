@@ -18,7 +18,7 @@ import {
 const icons = {
     [CLOUD]: "cloud",
     [RAIN]: "rain",
-    [SUN]: "sun",
+    [SUN]: "day-sunny",
     [SNOW]: "snow",
     [WINDY]: "windy",
     [CLOUDY]: "cloudy",

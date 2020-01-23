@@ -7,7 +7,6 @@ export default class Location extends Component {
 
     city = this.props.city; // Passed from the parent component 
 
-
     render() {
         // debugger; // To stop on Chrome at this point
         const { city } = this.props;

@@ -15,11 +15,21 @@ import {
 import "./styles.css"
 
 class WeatherData extends Component {
+
+    constructor(props) {
+        super(props);
+        this.data = this.props.data;
+    }
+
+
+
     render() {
+        console.log(this.data.weatherState);
+
         return (
             <div className="weatherDataCont">
-                <WeatherTemperature temperature={20} weatherState={FOG}></WeatherTemperature>
-                <WeatherExtraInfo humidity={80} wind={"10 m/s"}></WeatherExtraInfo>
+                <WeatherTemperature temperature={this.data.temperature} weatherState={this.data.weatherState}></WeatherTemperature>
+                <WeatherExtraInfo humidity={this.data.humidity} wind={this.data.wind}></WeatherExtraInfo>
             </div>
         );
     }
@@ -29,7 +39,11 @@ export default WeatherData;
 
 
 WeatherData.propTypes = {
-    temperature: PropTypes.number,
-    weatherState: PropTypes.string
+    data: PropTypes.shape({
+        temperature: PropTypes.number,
+        weatherState: PropTypes.string,
+        humidity: PropTypes.number,
+        wind: PropTypes.string
+    })
 
 };
