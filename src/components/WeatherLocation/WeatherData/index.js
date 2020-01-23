@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WeatherExtraInfo from './WeatherExtraInfo';
 import WeatherTemperature from './WeatherTemperature'
+import PropTypes from 'prop-types';
 import {
     CLOUD,
     RAIN,
@@ -25,3 +26,10 @@ class WeatherData extends Component {
 }
 
 export default WeatherData;
+
+
+WeatherData.propTypes = {
+    temperature: PropTypes.number,
+    weatherState: PropTypes.string
+
+};
