@@ -1,5 +1,9 @@
 .locationList {
-    margin-left: 1em;
-    background-color: #282c3440;
-    width: 30%;
+  margin-left: 1em;
+  background-color: #282c3440;
+  width: 100%;
+}
+
+div.butonActualiza > button {
+  margin-top: 2em;
 }
