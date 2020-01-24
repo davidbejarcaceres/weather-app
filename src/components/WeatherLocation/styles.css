@@ -1,19 +1,23 @@
-.locationCont {
-  font-size: 1.5em;
+.locationCont { /* City Title */
+  font-size: 1em;
   width: 100%;
-  height: 5em;
+  height: 3em;
   padding-left: 10px;
   color: whitesmoke;
 }
 
 .weatherLocationCont {
+  width: 80%;
+  align-content: center;
+  display: inline-block;
 }
 
 .buttonWeatherLocation{
   font-size: 1em;
-  margin-top: 0.5em;
+  margin-top: 0em;
   padding: 0.3em;
-  border-radius: 0.5em;
+  border-radius: 0.2em;
+  border-width: 1px;
   background-color: rgb(74, 5, 139);
   color: white;
   font-family: cursive;
