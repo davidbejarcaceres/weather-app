@@ -3,12 +3,9 @@ import Location from "./Location";
 import WeatherData from "./WeatherData";
 import PropTypes from "prop-types";
 import { SUN, WINDY } from "../../consants/weather";
-import { useState } from "react";
+import { useState, useEffect  } from "react";
+import api_weather from "../../consants/weather_api";
 
-const location = "Buenos Aires,ar";
-const api_key = "f99bbd9e4959b513e9bd0d7f7356b38d";
-const url_base_weather = "http://api.openweathermap.org/data/2.5/weather";
-const api_weather = `${url_base_weather}?q=${location}&appid=${api_key}`;
 
 const WeatherLocation = () => {
   const data1 = {
@@ -18,19 +15,27 @@ const WeatherLocation = () => {
     wind: "10 m/s"
   };
 
-  const city1 = "Bogota";
-
-  const [city, setCity] = useState(city1);
-  const [data, setData] = useState(data1);
+  // handleUpdateClick
+  const [city, setCity] = useState("loading..");
+  const [data, setData] = useState();
   const [isFirst, setIsFirst] = useState(true);
 
-async function handleUpdateClick() {
+  useEffect(() => {
+    const fetchData = async () => {
+      let nuevos= await getAPI(api_weather);
+      setData(nuevos.new_weather);
+      setCity(nuevos.city);
+    };
+    
+    fetchData();
+  }, []);
+
+
+async function handleUpdateClick() {  
     let nuevos= await getAPI(api_weather);
     console.log("Updated!");
-    setCity(isFirst ? nuevos.city : city1);
-    setData(isFirst ? nuevos.new_weather : data1);
-
-    setIsFirst(!isFirst);
+    setData(nuevos.new_weather);  
+    setCity(nuevos.city);
   }
 
    function getData(json) {
@@ -66,8 +71,13 @@ function getAPI(url) {
 
   return (
     <div className="weatherLocationCont">
-      <Location city={city}></Location>
-      <WeatherData data={data}></WeatherData>
+      {
+        (city) ? <Location city={city}></Location> : <Location city={"loading..."}></Location>
+      }
+      {
+        (data) ? <WeatherData data={data}></WeatherData> : <span></span>
+      }
+
       <button className="buttonWeatherLocation" onClick={handleUpdateClick}>
         Update
       </button>
