@@ -17,10 +17,6 @@ const cities = [
   "Riobamba,ec",
 ]
 
-
-
-
-
 function App() {
 
   const [ciudad, setCiudad] = useState()
@@ -29,8 +25,6 @@ function App() {
     console.log("APP: Selected location: " + city + "  Index: " + index);
     setCiudad(city)
   }
-
-
 
   return (
     <div className="App">
