@@ -6,7 +6,6 @@ import forecast_api from "../consants/forecast_api"
 import { SUN } from '../consants/weather';
 import transformForecast from "../services/transformForecast"
 import CircularProgress from "@material-ui/core/CircularProgress"
-import "./styles.css";
 
 
 const days = [
@@ -28,20 +27,33 @@ const ForecastExtended = (props) => {
     const [city, setCity] = useState(props.city)
     const [hour, setHour] = useState(10)
     const [data, setData] = useState(null)
+    const [upDating, setUpdating] = useState(true)
     console.log(city);
 
 
-    useEffect(() => {
-        const fetchData = async () => {
-          let forecast = await getAPI(forecast_api(city));
-          console.log(forecast);
-          setData(forecast) 
+    // useEffect( () => {
+    //     const fetchData = async () => {
+    //       let forecast = await getAPI(forecast_api(city));
+    //       console.log(forecast);
+    //       setData(forecast)     
+    //     };
     
-        };
-    
-        fetchData();
-      }, []); // Inside of the brackets input the variable as a listener to run the async function again
+    //     fetchData();
+    //   }, []); // Inside of the brackets input the variable as a listener to run the async function again
 
+      useEffect ( () => {
+        console.log("Ciudad ha cambiado");
+        setUpdating(true)
+        const fetchData = async () => {
+            let forecast = await getAPI(forecast_api(props.city));
+            console.log(forecast);
+            setData(forecast) 
+            setUpdating(false)    
+        };
+
+        fetchData()
+        
+      }, [props.city])
 
       function getAPI(url) {
         return fetch(url)
@@ -54,15 +66,24 @@ const ForecastExtended = (props) => {
           });
       };
 
-    const renderForecastItemDays = (forecastData) => {     
+    function resetData(){
+        setData(null)
+    }
+
+    const renderForecastItemDays = (forecastData) => { 
         return forecastData.map( (forecast, index) => <ForecastItem className="forecastItemCont" weekday={forecast.weekDay} hour={forecast.hour} data={forecast.data}  key={index}></ForecastItem> );
     }
     
     return (
         <div className="forecastExtended">
             <h1>Extended Forecast for {props.city}</h1>
-            {
-                (data) ? renderForecastItemDays(data) : <CircularProgress size={"3em"}></CircularProgress>
+
+            <div>
+                
+            </div>
+            {                
+                (data && !upDating) ? renderForecastItemDays(data) : <CircularProgress size={"3em"}></CircularProgress>
+                
             }
             
         </div>

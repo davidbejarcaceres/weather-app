@@ -37,7 +37,8 @@ code {
   display: flex;
 }
 
-.tituloAppH1 {
-  display: inline-block;
-  float: left;
+.tituloApp h1{
+  max-height: 3em;
+  margin: 0px;
 }
+

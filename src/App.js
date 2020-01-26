@@ -12,7 +12,9 @@ const cities = [
   "Moscow,ru",
   "Rome,it",
   "New York,us",
-  "London,uk"
+  "London,uk",
+  "Almeria,es",
+  "Riobamba,ec",
 ]
 
 
@@ -33,18 +35,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
         <div className="tituloApp">
           <img className="logoApp" src={logo} alt="Logo" />
           <h1 className="tituloAppH1">Weather App</h1>
         </div>
-
-
       </header>
 
       <Grid className="gridApp">
         <Row>
-          <Col lg={5} md={6} xs={12} >
+          <Col lg={5} md={5} xs={12} >
 
             <LocationList onSelectedLocation={ (city, index) => handleSelectedLocation(city, index)} cities={cities}></LocationList>
 

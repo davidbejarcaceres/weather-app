@@ -1,6 +1,7 @@
 .locationList {
   background-color: #282c3440;
   width: 100%;
+  max-height: 90vh;
   overflow: auto;
   box-shadow: 0 4px 8px 0 rgba(54, 12, 84, 0.38), 0 6px 10px 0 rgba(45, 6, 54, 0.86);
 }
@@ -10,7 +11,7 @@
   width: 100%;
   overflow: auto;
   box-shadow: 0 4px 8px 0 rgba(54, 12, 84, 0.38), 0 6px 10px 0 rgba(45, 6, 54, 0.86);
-  height: 100vh;
+  height: 90vh;
 }
 
 div.butonActualiza > button {
@@ -27,7 +28,6 @@ div.butonActualiza > button {
   margin-bottom: 2em;
   font-size: 2em;
   background-color: #bdb0b00f;
-
 }
 
 
@@ -41,6 +41,8 @@ div.butonActualiza > button {
   background-color: transparent;
 }
 
+
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .locationList {
@@ -48,6 +50,15 @@ div.butonActualiza > button {
     overflow: auto;
   }
 
+  #root > div > div > div > div.col-lg-7.col-md-6.col-xs-12 > div > div > div .weatherDataCont{
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 1.5em;
+  }
+
+  .detail {
+    max-height: 60vh;
+  }
   
 }
 
@@ -57,28 +68,58 @@ div.butonActualiza > button {
     max-height: 30vh;
     overflow: auto;
   }
+
+  #root > div > div > div > div.col-lg-7.col-md-6.col-xs-12 > div > div > div .weatherDataCont{
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 1.5em;
+  }
+
+  .detail {
+    max-height: 63vh;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .locationList {
-    max-height: 100vh;
+    max-height: 90vh;
     overflow: auto;
+  }
+
+  #root > div > div > div > div.col-lg-7.col-md-6.col-xs-12 > div > div > div .weatherDataCont{
+    margin-left: 1em;
+    margin-right: 1em;
+    font-size: 1.5em;
+  }
+
+  .detail {
+    max-height: 90vh;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .locationList {
-    max-height: 100vh;
     overflow: auto;
+    max-height: 89vh;
+    
+  }
+  #root > div > div > div > div.col-lg-7.col-md-6.col-xs-12 > div > div > div .weatherDataCont{
+    margin-left: 3em;
+    margin-right: 3em;
+    font-size: 1.5em;
+  }
+
+  .detail {
+    max-height: 89vh;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .locationList {
-    max-height: 100vh;
+    max-height: 90vh;
     overflow: auto;
   }
 }
