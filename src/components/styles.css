@@ -6,6 +6,15 @@
   box-shadow: 0 4px 8px 0 rgba(54, 12, 84, 0.38), 0 6px 10px 0 rgba(45, 6, 54, 0.86);
 }
 
+.MuiOutlinedInput-input {
+  color: white
+}
+
+.MuiOutlinedInput-input:focus{
+  color: white;
+}
+
+
 .detail{
   background-color: #282c3440;
   width: 100%;
@@ -41,6 +50,9 @@ div.butonActualiza > button {
   background-color: transparent;
 }
 
+#outlined-basic-label {
+  color: #f4ecffb4;
+}
 
 
 /* Extra small devices (phones, 600px and down) */

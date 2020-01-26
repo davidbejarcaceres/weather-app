@@ -3,43 +3,14 @@ import { useState, useEffect } from "react";
 import PropTypes from 'prop-types'
 import ForecastItem from "./ForecastItem"
 import forecast_api from "../consants/forecast_api"
-import { SUN } from '../consants/weather';
 import transformForecast from "../services/transformForecast"
 import CircularProgress from "@material-ui/core/CircularProgress"
 
-
-const days = [
-    "Lunes",
-    "Martes",
-    "Miercoles",
-    "Jueves",
-    "Viernes"
-]
-
-const data = {
-    temperature: 20,
-    weatherState: SUN,
-    humidity: 78,
-    wind: "22 km/h"
-  }
-
 const ForecastExtended = (props) => {
-    const [city, setCity] = useState(props.city)
-    const [hour, setHour] = useState(10)
+    const [city] = useState(props.city)
     const [data, setData] = useState(null)
     const [upDating, setUpdating] = useState(true)
-    console.log(city);
-
-
-    // useEffect( () => {
-    //     const fetchData = async () => {
-    //       let forecast = await getAPI(forecast_api(city));
-    //       console.log(forecast);
-    //       setData(forecast)     
-    //     };
-    
-    //     fetchData();
-    //   }, []); // Inside of the brackets input the variable as a listener to run the async function again
+    console.log("Forecast Extended:  " + city);
 
       useEffect ( () => {
         console.log("Ciudad ha cambiado");
@@ -53,7 +24,7 @@ const ForecastExtended = (props) => {
 
         fetchData()
         
-      }, [props.city])
+      }, [props.city]) // Inside of the brackets input the variable as a listener to run the async function again
 
       function getAPI(url) {
         return fetch(url)
@@ -65,10 +36,6 @@ const ForecastExtended = (props) => {
             return forecast;
           });
       };
-
-    function resetData(){
-        setData(null)
-    }
 
     const renderForecastItemDays = (forecastData) => { 
         return forecastData.map( (forecast, index) => <ForecastItem className="forecastItemCont" weekday={forecast.weekDay} hour={forecast.hour} data={forecast.data}  key={index}></ForecastItem> );

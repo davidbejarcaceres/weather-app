@@ -1,13 +1,12 @@
 import React from 'react';
-import { useState, useEffect } from "react";
-import WeatherLocation from "./components/WeatherLocation/index"
+import { useState } from "react";
 import LocationList from "./components/LocationList";
 import ForecastExtended from "./components/ForecastExtended"
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
 
-const cities = [
+const citiesWithCountry = [
   "Quito,ec",
   "Moscow,ru",
   "Rome,it",
@@ -15,15 +14,33 @@ const cities = [
   "London,uk",
   "Almeria,es",
   "Riobamba,ec",
+  "barcelona,es"
 ]
+
+
 
 function App() {
 
   const [ciudad, setCiudad] = useState()
+  const [cities, setCities] = useState(citiesWithCountry)
 
   const handleSelectedLocation = (city, index) => {
     console.log("APP: Selected location: " + city + "  Index: " + index);
     setCiudad(city)
+  }
+
+  const updateList = () => {
+    console.log("APP: Updating List");
+    setCities(cities.slice(0, cities.length -1))
+    console.log(cities);    
+  }
+
+  const onHandleAddCity = (newCity) => {
+    console.log("Add city to list:  " + newCity);   
+    const citiesAfterAdded = [...cities];
+    citiesAfterAdded.push(newCity)
+    cities.push(newCity)
+    setCities(citiesAfterAdded)
   }
 
   return (
@@ -39,7 +56,7 @@ function App() {
         <Row>
           <Col lg={5} md={5} xs={12} >
 
-            <LocationList onSelectedLocation={ (city, index) => handleSelectedLocation(city, index)} cities={cities}></LocationList>
+            <LocationList onUpdateClickHandle={ () => updateList()} onSelectedLocation={ (city, index) => handleSelectedLocation(city, index)} onAddCity={ (event) => onHandleAddCity(event)} cities={cities}></LocationList>
 
           </Col>
 
@@ -52,7 +69,6 @@ function App() {
                 <ForecastExtended city={ciudad}></ForecastExtended>
               }
               
-
             </div>
 
           </Col>

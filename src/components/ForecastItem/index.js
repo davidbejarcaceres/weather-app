@@ -1,20 +1,16 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Weatherdata from "../WeatherLocation/WeatherData"
-import { SUN } from '../../consants/weather'
-
-
 
 function ForecastItem(props) {
-    const [weekDay, setWeekDay] = useState(props.weekday)
-    const [hour, setHour] = useState(props.hour)
-    const [data, setData] = useState(props.data)
+    const [weekDay] = useState(props.weekday)
+    const [hour] = useState(props.hour)
+    const [data] = useState(props.data)
     return (
         <div>
             <span className="dayTime">{weekDay}  {hour} hs</span>
             <br></br>
-            <Weatherdata data={data}></Weatherdata>
-            
+            <Weatherdata data={data}></Weatherdata>            
         </div>
     )
 }

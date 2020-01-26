@@ -2,7 +2,7 @@ import React from "react";
 import Location from "./Location";
 import WeatherData from "./WeatherData";
 import PropTypes from "prop-types";
-import { SUN, WINDY, CLOUDY, SNOW, RAIN, FOG } from "../../consants/weather";
+import { SUN, CLOUDY, SNOW, RAIN, FOG } from "../../consants/weather";
 import { useState, useEffect } from "react";
 import api_weather from "../../consants/weather_api";
 import CircularProgress from "@material-ui/core/CircularProgress"
@@ -16,28 +16,25 @@ const WeatherLocation = (props) => {
   const onWeatherLocationClick = props.onWeatherLocationClick;
 
 
-
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (props) => {      
       let nuevos = await getAPI(api_weather(city));
       setData(nuevos.new_weather);
       setCity(nuevos.city);
-
     };
 
     fetchData();
-  }, []); // Inside of the brackets input the variable as a listener to run the async function again
+  }, [props.city]); // Inside of the brackets input the variable as a listener to run the async function again
 
 
   async function handleUpdateClick() {
     let nuevos = await getAPI(api_weather(city));
     console.log("Updated!");
-
   }
 
   function parseWeatherCondition(weatherCode) {
     let weatherState = SUN;
-    if (weatherCode == 800) { // Clear Sunny  
+    if (weatherCode === 800) { // Clear Sunny  
       weatherState = SUN
     } else if (weatherCode > 800) { // CLOUDS
       weatherState = CLOUDY
@@ -92,9 +89,6 @@ const WeatherLocation = (props) => {
         (data) ? <WeatherData data={data}></WeatherData> : <CircularProgress size={"3em"}></CircularProgress>
       }
       <br></br>
-      <Button size={"large"} onClick={handleUpdateClick} variant="contained" color="primary">
-        update
-      </Button>
     </div>
   );
 };

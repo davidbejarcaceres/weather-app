@@ -1,4 +1,4 @@
-import { CLOUD, RAIN, SUN, SNOW, WINDY, CLOUDY, FOG } from "../consants/weather";
+import { RAIN, SUN, SNOW, CLOUDY, FOG } from "../consants/weather";
 
 function parseWeatherCondition(weatherCode) {
   let weatherState = SUN;
@@ -33,7 +33,6 @@ const transformWeather = json => {
     weatherState: weatherState,
     wind: `${speed} m/s`
   };
-
 
   return nuevosDatos;
 };

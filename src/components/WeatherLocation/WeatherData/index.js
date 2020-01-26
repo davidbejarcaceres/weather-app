@@ -1,19 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import WeatherExtraInfo from "./WeatherExtraInfo";
 import WeatherTemperature from "./WeatherTemperature";
 import PropTypes from "prop-types";
-import { useState } from "react";
-
-import {
-  CLOUD,
-  RAIN,
-  SUN,
-  SNOW,
-  WINDY,
-  CLOUDY,
-  FOG
-} from "../../../consants/weather";
-
 import "./styles.css";
 
 const WeatherData = props => {
