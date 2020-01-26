@@ -11,17 +11,13 @@
 /* Scale up the box */
 .weatherDataCont:hover {
   /* transform: scale(1.2, 1.2); */
-  transform: scale(1.01);
-  box-shadow: 0 4px 8px 0 rgba(203, 40, 253, 0.5),
-    0 6px 10px 0 rgba(204, 19, 250, 0.705);
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px 0 rgba(203, 40, 253, 0.5), 0 6px 10px 0 rgba(204, 19, 250, 0.705);
 }
 
 .weatherExtraInfoCont {
-  background-color: cornflowerblue;
+  background-color: #673ab7;
   width: 100%;
-  /* display: inline-block; */
-  /* border-bottom-right-radius: 1em;
-  border-top-right-radius: 1em; */
   border-bottom-right-radius: 1em;
   border-bottom-left-radius: 1em;
 }
@@ -52,4 +48,29 @@
 .wicon {
   color: rgb(255, 255, 255);
   font-size: 4em;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .weatherTemperaturCont {
+    font-size: 0.75em;
+  }
+
+  .weatherExtraInfoCont {
+    font-size: 0.8em;
+    height: 3em;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .weatherTemperaturCont {
+    font-size: 0.75em;
+  }
+
+  .weatherExtraInfoCont {
+    font-size: 0.8em;
+    height: 3em;
+  }
 }

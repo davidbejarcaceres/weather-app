@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState, useEffect } from "react";
 import WeatherLocation from "./components/WeatherLocation/index"
 import LocationList from "./components/LocationList";
+import ForecastExtended from "./components/ForecastExtended"
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
@@ -13,7 +15,21 @@ const cities = [
   "London,uk"
 ]
 
+
+
+
+
 function App() {
+
+  const [ciudad, setCiudad] = useState()
+
+  const handleSelectedLocation = (city, index) => {
+    console.log("APP: Selected location: " + city + "  Index: " + index);
+    setCiudad(city)
+  }
+
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -28,16 +44,22 @@ function App() {
 
       <Grid className="gridApp">
         <Row>
-          <Col xs={12} md={6}>
+          <Col lg={5} md={6} xs={12} >
 
-            <LocationList cities={cities}></LocationList>
+            <LocationList onSelectedLocation={ (city, index) => handleSelectedLocation(city, index)} cities={cities}></LocationList>
 
           </Col>
 
-          <Col xs={12} md={6}>
+          <Col lg={7} md={6} xs={12} >
 
-            <div className="detailsComponent">
-              Details
+            <div className="detail">
+              
+              {
+                ciudad == null ? <h1>Please, select a city</h1> : 
+                <ForecastExtended city={ciudad}></ForecastExtended>
+              }
+              
+
             </div>
 
           </Col>
@@ -49,6 +71,8 @@ function App() {
     </div>
   );
 }
+
+
 
 
 

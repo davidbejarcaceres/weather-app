@@ -13,22 +13,22 @@ import NavigationIcon from '@material-ui/icons/Navigation';
 import CachedIcon from '@material-ui/icons/Cached';
 
 
-const onWeatherLocationClick = () => {
-    console.log("Clicked!");
-
+const onHandleLocationClick = (city, onSelectedListener, index) => {
+    onSelectedListener(city, index)
 }
 
-const onHandleLocationClick = (city) => {
-    console.log("onHandleLocationClick");
-
-}
-
-const strToComponents = (cities) => (
-    cities.map((city, index) => <WeatherLocation onWeatherLocationClick={() => onHandleLocationClick(city)} key={index} city={city} />)
+const strToComponents = (cities, onSelectedListener) => (
+    // cities.map((city, index) => <WeatherLocation onClick={onHandleLocationClick}  key={index} city={city} />)
+    cities.map((city, index) => <WeatherLocation onWeatherLocationClick={ () => {onHandleLocationClick(city, onSelectedListener, index)} }  key={index} city={city} />)
 )
 
 
-const LocationList = (props) => (
+const LocationList = (props) => {
+
+    const onSelectedListener = props.onSelectedLocation;    
+    const [cities, setCities] = useState(props.cities)
+    
+    return (
     <div className="locationList">
         <div className="butonActualiza">
             <Fab color="primary" size={"large"} variant="extended">
@@ -40,16 +40,17 @@ const LocationList = (props) => (
 
         <br></br>
 
-
-        {strToComponents(props.cities)}
+        {strToComponents(props.cities, onSelectedListener)}
     </div>
-)
+    );
+}
 
 
 
 
 LocationList.propTypes = {
     cities: PropTypes.array.isRequired,
+    onSelectedListener: PropTypes.func,
 };
 
 export default LocationList;

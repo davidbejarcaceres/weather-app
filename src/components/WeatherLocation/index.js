@@ -12,7 +12,8 @@ const WeatherLocation = (props) => {
 
   const [city, setCity] = useState(props.city);
   const [data, setData] = useState();
-  const { onWeatherLocationClick } = useState(props.onWeatherLocationClick);
+  // Function listener passed from parent component
+  const onWeatherLocationClick = props.onWeatherLocationClick;
 
 
 
