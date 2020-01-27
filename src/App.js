@@ -1,14 +1,12 @@
 import React from 'react';
 import { useState } from "react";
-import LocationList from "./components/LocationList";
+import PropTypes, { any } from 'prop-types';
+import LocationListContainer from "./containers/LocationListContainer";
 import ForecastExtended from "./components/ForecastExtended"
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
-import { createStore } from "redux"; // Imports redux
-import { connect } from "react-redux" // Can connect react and redux
 import { setCity } from "./actions/index"
-import { store } from "./store/index";
 
 const citiesWithCountry = [
   "Quito,ec",
@@ -29,24 +27,11 @@ function App(props) {
   const [cities, setCities] = useState(citiesWithCountry)
 
   const handleSelectedLocation = (city, index) => {
+    debugger
     console.log("APP: Selected location: " + city + "  Index: " + index);
     setCiudad(city)
-    props.setCity(city) // Redux create action,
   }
 
-  const updateList = () => {
-    console.log("APP: Updating List");
-    setCities(cities.slice(0, cities.length - 1))
-    console.log(cities);
-  }
-
-  const onHandleAddCity = (newCity) => {
-    console.log("Add city to list:  " + newCity);
-    const citiesAfterAdded = [...cities];
-    citiesAfterAdded.push(newCity)
-    cities.push(newCity)
-    setCities(citiesAfterAdded)
-  }
 
   return (
     <div className="App">
@@ -61,7 +46,7 @@ function App(props) {
         <Row>
           <Col lg={5} md={5} xs={12} >
 
-            <LocationList onUpdateClickHandle={() => updateList()} onSelectedLocation={(city, index) => handleSelectedLocation(city, index)} onAddCity={(event) => onHandleAddCity(event)} cities={cities}></LocationList>
+            <LocationListContainer handleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer>
 
           </Col>
 
@@ -86,10 +71,12 @@ function App(props) {
   );
 }
 
-
+App.propTypes = {
+  setCity: PropTypes.func.isRequired,
+};
 
 const mapDispatchToPropsActions = dispatch => ({
   setCity: value => dispatch(setCity(value))
-})
-const AppConnected = connect(null, mapDispatchToPropsActions)(App) // Conects App with redux 
-export default AppConnected;
+});
+
+export default App // Conects App with redux ;
