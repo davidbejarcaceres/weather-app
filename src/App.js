@@ -20,14 +20,12 @@ const citiesWithCountry = [
 ]
 
 
-
 function App(props) {
 
   const [ciudad, setCiudad] = useState()
   const [cities, setCities] = useState(citiesWithCountry)
 
-  const handleSelectedLocation = (city, index) => {
-    debugger
+  const handleSelectedLocation = (city, index) => {    
     console.log("APP: Selected location: " + city + "  Index: " + index);
     setCiudad(city)
   }
@@ -46,7 +44,7 @@ function App(props) {
         <Row>
           <Col lg={5} md={5} xs={12} >
 
-            <LocationListContainer handleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer>
+            <LocationListContainer onHandleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer>
 
           </Col>
 

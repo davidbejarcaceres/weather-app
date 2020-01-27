@@ -76,7 +76,7 @@ const LocationList = (props) => {
 
 
             <form className={classes.root} noValidate autoComplete="off">
-                <TextField type="search" onfocus={(event) => console.log(event)} onChange={handleChange} color="primary" id="outlined-basic" label="Add a new city" variant="outlined" />
+                <TextField type="search" onFocus={(event) => console.log()} onChange={handleChange} color="primary" id="outlined-basic" label="Add a new city" variant="outlined" />
                 <Fab onClick={() => { addCiudad(newCity) }} color="primary" size={"small"} aria-label="add">
                     <AddIcon className={"icon-btn-add"} />
                 </Fab>
