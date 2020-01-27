@@ -10,7 +10,7 @@ const Particulas = (json) => {
     params={{
 	    "particles": {
 	        "number": {
-	            "value": 160,
+	            "value": 60,
 	            "density": {
 	                "enable": false
 	            }
@@ -19,7 +19,7 @@ const Particulas = (json) => {
 	            "value": 3,
 	            "random": true,
 	            "anim": {
-	                "speed": 4,
+	                "speed": 2,
 	                "size_min": 0.3
 	            }
 	        },
