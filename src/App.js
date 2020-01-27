@@ -7,6 +7,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
 import { setCity } from "./actions/index"
+import Particulas from "./components/particulas"
 
 const citiesWithCountry = [
   "Quito,ec",
@@ -39,7 +40,7 @@ function App(props) {
           <h1 className="tituloAppH1">Weather App</h1>
         </div>
       </header>
-
+      <Particulas></Particulas>
       <Grid className="gridApp">
         <Row>
           <Col lg={5} md={5} xs={12} >

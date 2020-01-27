@@ -6,6 +6,15 @@
   box-shadow: 0 4px 8px 0 rgba(54, 12, 84, 0.38), 0 6px 10px 0 rgba(45, 6, 54, 0.86);
 }
 
+canvas{
+  position: absolute;
+  z-index: -1;
+  max-width: 95vh;
+  max-height: 95vh;
+  display: flex;
+  width: 100%;
+}
+
 .MuiOutlinedInput-input {
   color: white
 }
