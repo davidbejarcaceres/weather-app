@@ -14,21 +14,21 @@ import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles(theme => ({
     root: {
-    '& label.Mui-focused': {
+        '& label.Mui-focused': {
             color: 'red',
-    },
+        },
 
-    
-    '& > *': {
-        margin: theme.spacing(1),
-        backgroundColor: "#535a6b",
-        color: "white"
-      },
+
+        '& > *': {
+            margin: theme.spacing(1),
+            backgroundColor: "#535a6b",
+            color: "white"
+        },
     },
     input: {
         color: "white"
     }
-  }));
+}));
 
 
 const onHandleLocationClick = (city, onSelectedListener, index) => {
@@ -41,50 +41,50 @@ let newCity = null
 
 const LocationList = (props) => {
     const classes = useStyles();
-    const onSelectedListener = props.onSelectedLocation;    
+    const onSelectedListener = props.onSelectedLocation;
     const onUpdateClick = props.onUpdateClickHandle;
     const addCiudad = props.onAddCity;
     const [cities, setCities] = useState()
-    
+
 
     const handleChange = (event) => {
-        newCity = event.target.value;   
+        newCity = event.target.value;
     }
 
     const strToComponents = (ciudades, onSelectedListener) => (
-        cities.map((city, index) => <WeatherLocation onWeatherLocationClick={ () => {onHandleLocationClick(city, onSelectedListener, index)} }  key={index} city={city} />)
+        cities.map((city, index) => <WeatherLocation onWeatherLocationClick={() => { onHandleLocationClick(city, onSelectedListener, index) }} key={index} city={city} />)
     )
 
-    useEffect(() => {        
+    useEffect(() => {
         const actualizaLista = () => {
-            console.log("Actializa Lista");              
+            console.log("Actializa Lista");
             setCities(props.cities)
         }
 
         actualizaLista();
     }, [props.cities])
-    
+
     return (
-    <div className="locationList">
-        <div className="butonActualiza">
-            <Fab onClick={onUpdateClick} color="primary" size={"large"} variant="extended">
-                <CachedIcon className={"icon-btn"} />
-                Update
+        <div className="locationList">
+            <div className="butonActualiza">
+                <Fab onClick={onUpdateClick} color="primary" size={"large"} variant="extended">
+                    <CachedIcon className={"icon-btn"} />
+                    Update
             </Fab>
+            </div>
+            <br></br>
+
+
+            <form className={classes.root} noValidate autoComplete="off">
+                <TextField type="search" onfocus={(event) => console.log(event)} onChange={handleChange} color="primary" id="outlined-basic" label="Add a new city" variant="outlined" />
+                <Fab onClick={() => { addCiudad(newCity) }} color="primary" size={"small"} aria-label="add">
+                    <AddIcon className={"icon-btn-add"} />
+                </Fab>
+            </form>
+
+            <br></br>
+            {cities ? strToComponents(cities, onSelectedListener) : null}
         </div>
-        <br></br>
-
-
-        <form className={classes.root}  noValidate autoComplete="off">
-            <TextField type="search" onfocus={ (event) => console.log(event)} onChange={handleChange} color="primary" id="outlined-basic" label="Add a new city" variant="outlined" />
-            <Fab onClick={ () => { addCiudad(newCity)} }  color="primary" size={"small"} aria-label="add">
-                <AddIcon  className={"icon-btn-add"} />
-            </Fab>
-        </form>
-
-        <br></br>
-        { cities ? strToComponents(cities, onSelectedListener) : null}
-    </div>
     );
 }
 
