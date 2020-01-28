@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import PropTypes, { any } from 'prop-types';
+import PropTypes from 'prop-types';
 import WeatherLocation from "./WeatherLocation/index"
 import "./styles.css";
 
@@ -94,7 +94,7 @@ const LocationList = (props) => {
 LocationList.propTypes = {
     cities: PropTypes.array.isRequired,
     onSelectedListener: PropTypes.func,
-    addCiudad: PropTypes.func.isRequired,
+    onAddCity: PropTypes.func.isRequired,
 };
 
 export default LocationList;

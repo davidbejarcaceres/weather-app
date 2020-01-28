@@ -2,7 +2,8 @@ import React from 'react';
 import { useState } from "react";
 import PropTypes, { any } from 'prop-types';
 import LocationListContainer from "./containers/LocationListContainer";
-import ForecastExtended from "./components/ForecastExtended"
+import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
+
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
@@ -23,12 +24,12 @@ const citiesWithCountry = [
 
 function App(props) {
 
-  const [ciudad, setCiudad] = useState()
+  // const [ciudad, setCiudad] = useState()
   const [cities, setCities] = useState(citiesWithCountry)
 
-  const handleSelectedLocation = (city, index) => {    
+  const handleSelectedLocation = (city, index) => {
     console.log("APP: Selected location: " + city + "  Index: " + index);
-    setCiudad(city)
+    // setCiudad(city)
   }
 
 
@@ -53,10 +54,13 @@ function App(props) {
 
             <div className="detail">
 
-              {
+              {/* {
                 ciudad == null ? <h1>Please, select a city</h1> :
                   <ForecastExtended city={ciudad}></ForecastExtended>
-              }
+              } */}
+
+              <ForecastExtendedContainer></ForecastExtendedContainer>
+
 
             </div>
 
@@ -71,7 +75,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  setCity: PropTypes.func.isRequired,
+  // setCity: PropTypes.func.isRequired,
 };
 
 const mapDispatchToPropsActions = dispatch => ({

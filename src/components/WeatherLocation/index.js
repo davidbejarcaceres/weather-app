@@ -6,7 +6,6 @@ import { SUN, CLOUDY, SNOW, RAIN, FOG } from "../../consants/weather";
 import { useState, useEffect } from "react";
 import api_weather from "../../consants/weather_api";
 import CircularProgress from "@material-ui/core/CircularProgress"
-import Button from '@material-ui/core/Button';
 
 const WeatherLocation = (props) => {
 
@@ -17,7 +16,7 @@ const WeatherLocation = (props) => {
 
 
   useEffect(() => {
-    const fetchData = async (props) => {      
+    const fetchData = async (props) => {
       let nuevos = await getAPI(api_weather(city));
       setData(nuevos.new_weather);
       setCity(nuevos.city);

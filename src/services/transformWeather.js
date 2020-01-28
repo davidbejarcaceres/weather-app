@@ -2,7 +2,7 @@ import { RAIN, SUN, SNOW, CLOUDY, FOG } from "../consants/weather";
 
 function parseWeatherCondition(weatherCode) {
   let weatherState = SUN;
-  if (weatherCode == 800) {
+  if (weatherCode === 800) {
     // Clear Sunny
     weatherState = SUN;
   } else if (weatherCode > 800) {
@@ -25,7 +25,6 @@ const transformWeather = json => {
   const { humidity, temp } = json.main;
   const speed = json.wind.speed;
   const weatherState = parseWeatherCondition(json.weather[0].id);
-  const city = json.name;
 
   let nuevosDatos = {
     humidity: humidity,

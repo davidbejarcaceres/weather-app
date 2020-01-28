@@ -3,7 +3,8 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 import LocationList from "../components/LocationList";
 import { connect } from "react-redux" // Can connect react and redux
-import { setCity } from "../actions/index"
+import { setSelectedCity } from "../actions/index" // Redux function
+
 
 const citiesWithCountry = [
     "Quito,ec",
@@ -23,7 +24,7 @@ function LocationListContainer(props) {
     const [cities, setCities] = useState(citiesWithCountry)
     const citySelectedToApp = props.onHandleSelectedLocation
 
-    const handleSelectedLocation = (city, index) => {        
+    const handleSelectedLocation = (city, index) => {
         console.log("APP: Selected location: " + city + "  Index: " + index);
         setCiudad(city)
         props.setCity(city) // Redux create action,
@@ -55,7 +56,7 @@ LocationListContainer.propTypes = {
 }
 
 const mapDispatchToPropsActions = dispatch => ({
-    setCity: value => dispatch(setCity(value))
+    setCity: value => dispatch(setSelectedCity(value)) // Changes the state in Redux
 });
 
 export default connect(null, mapDispatchToPropsActions)(LocationListContainer)
