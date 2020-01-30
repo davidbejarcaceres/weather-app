@@ -54,11 +54,6 @@ function App(props) {
 
             <div className="detail">
 
-              {/* {
-                ciudad == null ? <h1>Please, select a city</h1> :
-                  <ForecastExtended city={ciudad}></ForecastExtended>
-              } */}
-
               <ForecastExtendedContainer></ForecastExtendedContainer>
 
 
