@@ -2,16 +2,14 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Weatherdata from "../WeatherLocation/WeatherData"
 
-function ForecastItem(props) {
-    const [weekday] = useState(props.weekday)
-    const [hour] = useState(props.hour)
-    const [data] = useState(props.data)
+function ForecastItem({weekday, hour, data}) {
+
     return (
         <div>
             <span className="dayTime">{weekday}  {hour} hs</span>
             <br></br>
             {
-                weekday ? <Weatherdata data={data}></Weatherdata> : null
+                <Weatherdata data={data}></Weatherdata>
             }
 
         </div>
