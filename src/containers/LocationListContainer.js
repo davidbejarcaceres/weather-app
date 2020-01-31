@@ -3,7 +3,7 @@ import { useState } from "react";
 import PropTypes from 'prop-types'
 import LocationList from "../components/LocationList";
 import { connect } from "react-redux" // Can connect react and redux
-import { setSelectedCity } from "../actions/index" // Redux function
+import { setSelectedCity, setWeather } from "../actions/index" // Redux function
 
 
 const citiesWithCountry = [
@@ -18,11 +18,12 @@ const citiesWithCountry = [
 ]
 
 function LocationListContainer(props) {
+    debugger
 
-
-    const [ciudad, setCiudad] = useState()
+    const [ciudad, setCiudad] = useState(props.city)
     const [cities, setCities] = useState(citiesWithCountry)
     const citySelectedToApp = props.onHandleSelectedLocation
+    const setWeather = props.setWeather(cities)
 
     const handleSelectedLocation = (city, index) => {
         console.log("APP: Selected location: " + city + "  Index: " + index);
@@ -45,13 +46,13 @@ function LocationListContainer(props) {
         setCities(citiesAfterAdded)
     }
 
-
+    debugger
     return (
         <LocationList
-            cities
             onUpdateClickHandle={() => updateList()}
             onSelectedLocation={(city, index) => handleSelectedLocation(city, index)}
-            onAddCity={(event) => onHandleAddCity(event)} cities={cities}>
+            onAddCity={(event) => onHandleAddCity(event)}
+            cities={cities}>
         </LocationList>
     )
 }
@@ -59,6 +60,7 @@ function LocationListContainer(props) {
 LocationListContainer.propTypes = {
     setCity: PropTypes.func.isRequired,
     citites: PropTypes.array.isRequired,
+    setWeather: PropTypes.func.isRequired,
 }
 
 const mapDispatchToPropsActions = dispatch => ({
