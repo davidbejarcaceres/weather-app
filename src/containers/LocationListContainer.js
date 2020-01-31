@@ -47,16 +47,23 @@ function LocationListContainer(props) {
 
 
     return (
-        <LocationList onUpdateClickHandle={() => updateList()} onSelectedLocation={(city, index) => handleSelectedLocation(city, index)} onAddCity={(event) => onHandleAddCity(event)} cities={cities}></LocationList>
+        <LocationList
+            cities
+            onUpdateClickHandle={() => updateList()}
+            onSelectedLocation={(city, index) => handleSelectedLocation(city, index)}
+            onAddCity={(event) => onHandleAddCity(event)} cities={cities}>
+        </LocationList>
     )
 }
 
 LocationListContainer.propTypes = {
     setCity: PropTypes.func.isRequired,
+    citites: PropTypes.array.isRequired,
 }
 
 const mapDispatchToPropsActions = dispatch => ({
-    setCity: value => dispatch(setSelectedCity(value)) // Changes the state in Redux
+    setCity: value => dispatch(setSelectedCity(value)), // Changes the state in Redux
+    setWeather: cities => dispatch(setWeather(cities))
 });
 
 export default connect(null, mapDispatchToPropsActions)(LocationListContainer)

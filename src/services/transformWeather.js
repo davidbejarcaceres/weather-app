@@ -21,7 +21,7 @@ function parseWeatherCondition(weatherCode) {
   return weatherState;
 }
 
-const transformWeather = json => {
+export const transformWeather = json => {
   const { humidity, temp } = json.main;
   const speed = json.wind.speed;
   const weatherState = parseWeatherCondition(json.weather[0].id);

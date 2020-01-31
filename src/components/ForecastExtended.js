@@ -4,7 +4,7 @@ import ForecastItem from "./ForecastItem"
 import CircularProgress from "@material-ui/core/CircularProgress"
 
 
-const ForecastExtended = ({city, forecast}) => {  
+const ForecastExtended = ({ city, forecast }) => {
 
   const renderForecastItemDays = (forecastData) => {
     return forecastData.map((forecast, index) => <ForecastItem className="forecastItemCont" weekday={forecast.weekDay} hour={forecast.hour} data={forecast.data} key={index}></ForecastItem>);
@@ -18,7 +18,7 @@ const ForecastExtended = ({city, forecast}) => {
 
       </div>
       {
-        
+
         renderForecastItemDays(forecast)
 
       }
