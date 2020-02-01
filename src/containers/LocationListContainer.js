@@ -1,59 +1,58 @@
 import React from 'react'
-import { bindActionCreators} from "redux"
+import { useState } from "react";
 import PropTypes from 'prop-types'
 import LocationList from "../components/LocationList";
 import { connect } from "react-redux" // Can connect react and redux
 import { setSelectedCity, setWeather } from "../actions/index" // Redux function
-import { getWeatherCities, getCity } from './../reducers';
-import { useEffect } from "react"
 
-const LocationListContainer = (props)  => {
-    const { setWeather, setSelectedCity, cities, city } = props;
 
-    // setWeather(cities);
-    console.log("Rendered List Container")
-     
-    useEffect(() => {
-        
-        console.log("Did mount");
-        setWeather(cities);
-        setSelectedCity(city)
+const citiesWithCountry = [
+    "Quito,ec",
+    "Moscow,ru",
+    "Rome,it",
+    "New York,us",
+    "London,uk",
+    "Almeria,es",
+    "Riobamba,ec",
+    "barcelona,es"
+]
 
-        return () => {
-            
-        };
-    }, [props.city])
+function LocationListContainer(props) {
+    debugger
 
+    const [ciudad, setCiudad] = useState(props.city)
+    const [cities, setCities] = useState(citiesWithCountry)
+    const citySelectedToApp = props.onHandleSelectedLocation
+    const setWeather = props.setWeather(cities)
 
     const handleSelectedLocation = (city, index) => {
         console.log("APP: Selected location: " + city + "  Index: " + index);
-        debugger
-        setSelectedCity(city)
-        // setCiudad(city)
-        // props.setCity(city) // Redux create action,
-        // citySelectedToApp(city, index)
+        setCiudad(city)
+        props.setCity(city) // Redux create action,
+        citySelectedToApp(city, index)
     }
 
     const updateList = () => {
-        // console.log("APP: Updating List");
-        // setCities(cities.slice(0, cities.length - 1))
-        // console.log(cities);
+        console.log("APP: Updating List");
+        setCities(cities.slice(0, cities.length - 1))
+        console.log(cities);
     }
 
     const onHandleAddCity = (newCity) => {
-        // console.log("Add city to list:  " + newCity);
-        // const citiesAfterAdded = [...cities];
-        // citiesAfterAdded.push(newCity)
-        // cities.push(newCity)
-        // setCities(citiesAfterAdded)
+        console.log("Add city to list:  " + newCity);
+        const citiesAfterAdded = [...cities];
+        citiesAfterAdded.push(newCity)
+        cities.push(newCity)
+        setCities(citiesAfterAdded)
     }
 
+    debugger
     return (
         <LocationList
             onUpdateClickHandle={() => updateList()}
             onSelectedLocation={(city, index) => handleSelectedLocation(city, index)}
             onAddCity={(event) => onHandleAddCity(event)}
-            cities={props.citiesWeather}>
+            cities={cities}>
         </LocationList>
     )
 }
@@ -62,18 +61,12 @@ LocationListContainer.propTypes = {
     setCity: PropTypes.func.isRequired,
     citites: PropTypes.array.isRequired,
     setWeather: PropTypes.func.isRequired,
-    city: PropTypes.string.isRequired,
 }
 
 const mapDispatchToPropsActions = dispatch => ({
-    setSelectedCity: value => dispatch(setSelectedCity(value)), // Changes the state in Redux
+    setCity: value => dispatch(setSelectedCity(value)), // Changes the state in Redux
     setWeather: cities => dispatch(setWeather(cities))
 });
 
-const mapStateToProps = state => ({
-    citiesWeather: getWeatherCities(state),
-    city: getCity(state)
-});
-
-export default connect(mapStateToProps, mapDispatchToPropsActions)(LocationListContainer)
+export default connect(null, mapDispatchToPropsActions)(LocationListContainer)
 
