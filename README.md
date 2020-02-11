@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 6. Live background base on [React Particles.js](https://github.com/Wufe/react-particles-js#readme)
 
 ## Screenshots:
-    Tablets and Phones:
+    Tablets (landscape, portrait):
 <div class="img-container" style="text-align: center; display: block; max-width: 100%;">
     <img alt="tablet_landscape" src="screenshots/tablet_landscape.webp" height="400" />
     <img alt="tablet_portrait" src="screenshots/tablet_portrait.webp" height="400" />
