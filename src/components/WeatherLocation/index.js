@@ -8,7 +8,36 @@ import api_weather from "../../consants/weather_api";
 import CircularProgress from "@material-ui/core/CircularProgress"
 import { transformWeather } from "../../services/transformWeather";
 
-const WeatherLocation = ({ onWeatherLocationClick, city, data }) => {
+const WeatherLocation = (props) => {
+
+  const [city, setCity] = useState(props.city);
+  const [data, setData] = useState();
+  // Function listener passed from parent component
+  const onWeatherLocationClick = props.onWeatherLocationClick;
+
+
+  useEffect(() => {
+    const fetchData = async (props) => {
+      let newData = await getAPI(api_weather(city));
+      setData(newData);
+      setCity(city);
+    };
+
+    fetchData();
+  }, [props.city]); // Inside of the brackets input the variable as a listener to run the async function again
+
+
+  function getAPI(url) {
+    return fetch(url)
+      .then(res => {
+        return res.json();
+      })
+      .then(jsonResponse => {
+        return transformWeather(jsonResponse);
+      });
+  };
+
+
   return (
     <div onClick={onWeatherLocationClick} className="weatherLocationCont">
       <Location city={city}></Location>

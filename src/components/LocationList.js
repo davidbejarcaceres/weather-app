@@ -40,12 +40,11 @@ const onHandleLocationClick = (city, onSelectedListener, index) => {
 let newCity = null
 
 const LocationList = (props) => {
-    debugger
     const classes = useStyles();
     const onSelectedListener = props.onSelectedLocation;
     const onUpdateClick = props.onUpdateClickHandle;
     const addCiudad = props.onAddCity;
-    const [cities, setCities] = useState(props.cities)
+    const [cities, setCities] = useState()
 
 
     const handleChange = (event) => {
@@ -53,11 +52,7 @@ const LocationList = (props) => {
     }
 
     const strToComponents = (ciudades, onSelectedListener) => (
-        cities.map((city, index) => <WeatherLocation
-            onWeatherLocationClick={() => { onHandleLocationClick(city, onSelectedListener, index) }}
-            city={city}
-            data={city.data}
-            key={index} />)
+        cities.map((city, index) => <WeatherLocation onWeatherLocationClick={() => { onHandleLocationClick(city, onSelectedListener, index) }} key={index} city={city} />)
     )
 
     useEffect(() => {
