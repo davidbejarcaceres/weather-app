@@ -1,5 +1,25 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Weather App built with React using Hooks and Redux
+
+1. React-[Redux](https://redux.js.org/api/store/) implementation.
+2. Async fetch from server
+3. React [Hooks](https://reactjs.org/docs/hooks-intro.html).
+4. Responsive design for mulit-screen devices.
+5. Material Dark theme.
+6. Live background base on [React Particles.js](https://github.com/Wufe/react-particles-js#readme)
+
+## Screenshots:
+    Tablet:
+![alt](screenshots/tablet_landscape.webp)
+![alt](screenshots/tablet_portrait.webp)
+
+    Mobile:
+![alt](screenshots/phone.webp)
+
+    Desktop:
+![alt](screenshots/desktop.webp)
+
 ## Available Scripts
 
 In the project directory, you can run:
