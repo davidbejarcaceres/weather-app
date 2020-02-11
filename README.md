@@ -14,6 +14,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 <div class="img-container" style="text-align: center; display: block; max-width: 100%;">
     <img alt="tablet_landscape" src="screenshots/tablet_landscape.webp" height="400" />
     <img alt="tablet_portrait" src="screenshots/tablet_portrait.webp" height="400" />
+</div>
+
+    Phones:
+<div class="img-container" style="text-align: center; display: block; max-width: 100%;">
     <img alt="phone" src="screenshots/phone.webp" height="400"/>
 </div>
 
