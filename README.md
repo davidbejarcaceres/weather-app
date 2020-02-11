@@ -9,31 +9,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. Material Dark theme.
 6. Live background base on [React Particles.js](https://github.com/Wufe/react-particles-js#readme)
 
-<style>
-    .img-container {
-    text-align: center;
-    display: block;
-    max-width: 100%
-    }
-</style>
-
 ## Screenshots:
     Tablets and Phones:
-<div class="img-container">
-    <img alt="tablet_landscape" src="screenshots/tablet_landscape.webp" height="250" />
-    <img alt="tablet_portrait" src="screenshots/tablet_portrait.webp" height="250" />
-    <img alt="phone" src="screenshots/phone.webp" height="250"/>
+<div class="img-container" style="text-align: center; display: block; max-width: 100%;">
+    <img alt="tablet_landscape" src="screenshots/tablet_landscape.webp" height="400" />
+    <img alt="tablet_portrait" src="screenshots/tablet_portrait.webp" height="400" />
+    <img alt="phone" src="screenshots/phone.webp" height="400"/>
 </div>
 
 
     Desktop:
-<style>
-    .img-container {
-    text-align: center;
-    display: block;
-    }
-</style>
-<div class="img-container">
+<div style="text-align: center; display: block; max-width: 100%;">
     <img src="screenshots/desktop.webp" ali width="50%"/>
 </div>
 
