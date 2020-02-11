@@ -11,7 +11,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Screenshots:
     Tablet:
-![alt](screenshots/tablet_landscape.webp){:height="700px" width="400px"}
+![alt](screenshots/tablet_landscape.webp)
+<img src="screenshots/tablet_landscape.webp" width="400" height="790">
 ![alt](screenshots/tablet_portrait.webp)
 
     Mobile:
