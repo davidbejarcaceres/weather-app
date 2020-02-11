@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Async fetch from server
 3. React [Hooks](https://reactjs.org/docs/hooks-intro.html).
 4. Responsive design for mulit-screen devices.
-5. Material Dark theme.
+5. [Material-UI](https://material-ui.com/) [Dark theme](https://material.io/design/color/dark-theme.html).
 6. Live background base on [React Particles.js](https://github.com/Wufe/react-particles-js#readme)
 
 ## Screenshots:
