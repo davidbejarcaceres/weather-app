@@ -47,21 +47,28 @@ export const setSelectedCity = payload => {
 }
 
 export const setWeather = payload => {
-
+    debugger
     return dispatch => {
+
         payload.forEach(city => {
-            
-            dispatch(getWeatherCity(city));
+            let url_weather = api_weather(payload)
 
-            const url = api_weather(city)
-            fetch(url).then( data => {
-                return data.json();
-            }).then( weather_data => {
-                const data = transformWeather(weather_data);
-                
-                dispatch(setWeatherCity({city, data}));
-            });
-        });
+            // Activar en el estado un indicador  bùsqueda de datos
+            dispatch(getWeatherCity(city))
+
+
+            fetch(url_weather)
+                .then(res => {
+                    return res.json();
+                })
+                .then(jsonResponse => {
+                    let data = transformWeather(jsonResponse)
+                    // return forecast;
+                    // Modificar el estado con el reusltado de la promise
+                    debugger
+                    dispatch(setWeatherCity({ city, data }))
+                });
+        })
+
     }
-
-};
+}

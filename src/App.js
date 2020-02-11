@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from "react";
 import PropTypes, { any } from 'prop-types';
 import LocationListContainer from "./containers/LocationListContainer";
 import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
@@ -24,7 +25,7 @@ const citiesWithCountry = [
 function App(props) {
 
   // const [ciudad, setCiudad] = useState()
-  // const [cities, setCities] = useState(citiesWithCountry)
+  const [cities, setCities] = useState(citiesWithCountry)
 
   const handleSelectedLocation = (city, index) => {
     console.log("APP: Selected location: " + city + "  Index: " + index);
@@ -45,8 +46,7 @@ function App(props) {
         <Row>
           <Col lg={5} md={5} xs={12} >
 
-            {/* <LocationListContainer cities={citiesWithCountry} onHandleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer> */}
-            <LocationListContainer cities={citiesWithCountry}></LocationListContainer>
+            <LocationListContainer onHandleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer>
 
           </Col>
 

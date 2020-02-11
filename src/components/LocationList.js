@@ -1,5 +1,5 @@
 import React from 'react';
-// import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import WeatherLocation from "./WeatherLocation/index"
 import "./styles.css";
@@ -40,32 +40,34 @@ const onHandleLocationClick = (city, onSelectedListener, index) => {
 let newCity = null
 
 const LocationList = (props) => {
+    debugger
     const classes = useStyles();
-    const cities = props.cities
     const onSelectedListener = props.onSelectedLocation;
     const onUpdateClick = props.onUpdateClickHandle;
     const addCiudad = props.onAddCity;
+    const [cities, setCities] = useState(props.cities)
+
 
     const handleChange = (event) => {
         newCity = event.target.value;
     }
 
     const strToComponents = (ciudades, onSelectedListener) => (
-        ciudades.map((city, index) => <WeatherLocation
-            onWeatherLocationClick={() => { onHandleLocationClick(city.name, onSelectedListener, index) }}
-            city={city.name} 
+        cities.map((city, index) => <WeatherLocation
+            onWeatherLocationClick={() => { onHandleLocationClick(city, onSelectedListener, index) }}
+            city={city}
             data={city.data}
-            key={city.key}  />)
+            key={index} />)
     )
 
-    // useEffect(() => {
-    //     const actualizaLista = () => {
-    //         console.log("Actializa Lista");
-    //         setCities(props.cities)
-    //     }
+    useEffect(() => {
+        const actualizaLista = () => {
+            console.log("Actializa Lista");
+            setCities(props.cities)
+        }
 
-    //     actualizaLista();
-    // }, [props.cities])
+        actualizaLista();
+    }, [props.cities])
 
     return (
         <div className="locationList">
@@ -87,7 +89,6 @@ const LocationList = (props) => {
 
             <br></br>
             {cities ? strToComponents(cities, onSelectedListener) : null}
-            
         </div>
     );
 }
