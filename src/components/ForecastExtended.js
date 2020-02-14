@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
-import ForecastItem from "./ForecastItem"
-import CircularProgress from "@material-ui/core/CircularProgress"
+
+const ForecastItemLazy = lazy(() => import("./ForecastItem"));
 
 
 const ForecastExtended = ({city, forecast}) => {  
 
   const renderForecastItemDays = (forecastData) => {
-    return forecastData.map((forecast, index) => <ForecastItem className="forecastItemCont" weekday={forecast.weekDay} hour={forecast.hour} data={forecast.data} key={index}></ForecastItem>);
+    return forecastData.map((forecast, index) => 
+    <Suspense> <ForecastItemLazy className="forecastItemCont" weekday={forecast.weekDay} hour={forecast.hour} data={forecast.data} key={index}></ForecastItemLazy> </Suspense>);
   }
 
   return (

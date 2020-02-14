@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import PropTypes from 'prop-types'
-import ForecastExtended from '../components/ForecastExtended'
 import { connect } from 'react-redux'
 import { getForecastDataFromCities, getCity } from "../reducers"
+import CircularProgress from "@material-ui/core/CircularProgress"
+
+
+const ForecastExtendedLazy = lazy(() => import('../components/ForecastExtended'));
+
 
 const ForecastExtendedContainer = ({city, forecastData}) => {
 
@@ -10,7 +14,7 @@ const ForecastExtendedContainer = ({city, forecastData}) => {
         <div>
 
             {
-                forecastData ? <ForecastExtended forecast={forecastData} city={city}></ForecastExtended> : null
+                forecastData ? <Suspense> <ForecastExtendedLazy forecast={forecastData} city={city}></ForecastExtendedLazy> </Suspense> : <CircularProgress/>
             }
         </div>
     )

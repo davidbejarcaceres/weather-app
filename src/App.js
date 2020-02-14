@@ -1,14 +1,9 @@
-import React from 'react';
-import { useState } from "react";
-import PropTypes, { any } from 'prop-types';
-import LocationListContainer from "./containers/LocationListContainer";
-import ForecastExtendedContainer from "./containers/ForecastExtendedContainer";
-
+import React, { useState, lazy, Suspense } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Grid, Col, Row } from "react-flexbox-grid";
 import { setCity } from "./actions/index"
-import Particulas from "./components/particulas"
+import Particles from "./components/particulas"
 
 const citiesWithCountry = [
   "Quito,ec",
@@ -21,6 +16,9 @@ const citiesWithCountry = [
   "barcelona,es"
 ]
 
+
+const LocationListContainerLazy = lazy(() => import("./containers/LocationListContainer"));
+const ForecastExtendedContainerLazy = lazy(() => import("./containers/ForecastExtendedContainer"));
 
 function App(props) {
 
@@ -41,12 +39,15 @@ function App(props) {
           <h1 className="tituloAppH1">Weather App</h1>
         </div>
       </header>
-      <Particulas></Particulas>
+      <Particles></Particles>
       <Grid className="gridApp">
         <Row>
           <Col lg={5} md={5} xs={12} >
 
-            <LocationListContainer onHandleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainer>
+              <Suspense fallback={<div>Loading...</div>}>
+                <LocationListContainerLazy onHandleSelectedLocation={(city, index) => handleSelectedLocation(city, index)}></LocationListContainerLazy>
+              </Suspense>
+                      
 
           </Col>
 
@@ -54,8 +55,10 @@ function App(props) {
 
             <div className="detail">
 
-              <ForecastExtendedContainer></ForecastExtendedContainer>
-
+              
+              <Suspense fallback={<div>Loading...</div>}>
+                <ForecastExtendedContainerLazy {...props} />
+              </Suspense>
 
             </div>
 
@@ -69,9 +72,6 @@ function App(props) {
   );
 }
 
-App.propTypes = {
-  // setCity: PropTypes.func.isRequired,
-};
 
 const mapDispatchToPropsActions = dispatch => ({
   setCity: value => dispatch(setCity(value))
